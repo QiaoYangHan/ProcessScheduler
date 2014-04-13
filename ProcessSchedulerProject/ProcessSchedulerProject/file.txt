@@ -1,0 +1,22 @@
+to ready
+ready.push
+state = READY
+
+ready to running
+Scheduler::runProcess
+Process::startBurst
+state = RUNNING
+
+running to done or waiting
+if burst finished
+  end process
+  or
+  process block, state = WAITING, contextSwitch, runningProcess = NULL
+
+update blockingProcess
+
+waiting to ready
+blockedProcess keeps waiting
+unblockedProess pushed to ready queue
+  
+
